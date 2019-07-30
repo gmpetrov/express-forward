@@ -12,8 +12,6 @@ export const expressForward = (endpoint: string, app: express.Application) => {
 
         const url = req.path.replace(regex, '');
 
-        console.log('URL', url);
-
         return req.pipe(request({ qs: req.query, uri: url })).pipe(res);
       } catch (err) {
         return res.json(err);
